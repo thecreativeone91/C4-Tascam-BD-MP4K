@@ -1,0 +1,1478 @@
+<devicedata>
+  <copyright>.</copyright>
+  <creator>Thecreativeone91</creator>
+  <manufacturer>Tascam</manufacturer>
+  <name>Tascam BD-MP4K</name>
+  <model>BD-MP4K</model>
+  <search_types>
+    <type>Tascam:dvd</type>
+  </search_types>
+  <created>02/09/2022 7:34 PM</created>
+  <modified>04/18/2022 1:37 PM</modified>
+  <version>109</version>
+  <small>devices_sm\dvd.gif</small>
+  <large>devices_lg\dvd.gif</large>
+  <control>lua_gen</control>
+  <controlmethod>ip</controlmethod>
+  <driver>DriverWorks</driver>
+  <proxies qty="1">
+    <proxy proxybindingid="5001" name="Tascam BD-MP4K Disc Player" primary="True">dvd</proxy>
+  </proxies>
+  <capabilities>
+    <can_play_cd>true</can_play_cd>
+    <has_direct_track_access>false</has_direct_track_access>
+  </capabilities>
+  <connections>
+    <connection>
+      <id>5001</id>
+      <facing>6</facing>
+      <connectionname>DVD</connectionname>
+      <type>2</type>
+      <consumer>False</consumer>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <linelevel>False</linelevel>
+      <classes>
+        <class>
+          <classname>DVD</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>1</id>
+      <facing>1</facing>
+      <connectionname>RS-232</connectionname>
+      <type>1</type>
+      <consumer>True</consumer>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>RS_232</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>6001</id>
+      <facing>6</facing>
+      <connectionname>Network Connection</connectionname>
+      <type>4</type>
+      <consumer>true</consumer>
+      <audiosource>false</audiosource>
+      <videosource>false</videosource>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>TCP</classname>
+          <ports>
+            <port>
+              <number>8102</number>
+              <auto_connect>true</auto_connect>
+              <monitor_connection>true</monitor_connection>
+              <keep_connection>true</keep_connection>
+            </port>
+          </ports>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4000</id>
+      <facing>6</facing>
+      <connectionname>Output Main</connectionname>
+      <type>6</type>
+      <consumer>False</consumer>
+      <audiosource>True</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>STEREO</classname>
+        </class>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>2000</id>
+      <facing>6</facing>
+      <connectionname>Output Main</connectionname>
+      <type>5</type>
+      <consumer>False</consumer>
+      <audiosource>False</audiosource>
+      <videosource>True</videosource>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>300</id>
+      <facing>6</facing>
+      <connectionname>Play</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>BUTTON_LINK</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>301</id>
+      <facing>6</facing>
+      <connectionname>Pause</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>BUTTON_LINK</classname>
+        </class>
+      </classes>
+    </connection>
+    <!-- RF Connections for universal minidrivers.  These are in the range 3101-3125; more can be added if necessary.  Reflect this in the driver.lua code -->
+  </connections>
+  <config>
+    <power_management_method>DiscreteCodes</power_management_method>
+    <power_command_delay>0</power_command_delay>
+    <power_delay>0</power_delay>
+    <power_command_needed>False</power_command_needed>
+    <serialsettings>9600 8 none 1 none 232</serialsettings>
+    <documentation file="www/documentation.rtf" />
+    <script file="driver.lua" />
+    <properties>
+      <property>
+        <name>Log Level</name>
+        <type>LIST</type>
+        <readonly>false</readonly>
+        <default>2 - Warning</default>
+        <items>
+          <item>0 - Alert</item>
+          <item>1 - Error</item>
+          <item>2 - Warning</item>
+          <item>3 - Info</item>
+          <item>4 - Trace</item>
+          <item>5 - Debug</item>
+        </items>
+      </property>
+      <property>
+        <name>Log Mode</name>
+        <type>LIST</type>
+        <readonly>false</readonly>
+        <default>Off</default>
+        <items>
+          <item>Off</item>
+          <item>Print</item>
+          <item>Log</item>
+          <item>Print and Log</item>
+        </items>
+      </property>
+      <property>
+        <name>Command Delay Milliseconds</name>
+        <type>RANGED_INTEGER</type>
+        <readonly>false</readonly>
+        <default>650</default>
+        <minimum>650</minimum>
+        <maximum>2500</maximum>
+      </property>
+      <property>
+        <name>Power On Delay Seconds</name>
+        <type>RANGED_INTEGER</type>
+        <readonly>false</readonly>
+        <default>10</default>
+        <minimum>1</minimum>
+        <maximum>30</maximum>
+      </property>
+      <property>
+        <name>Power Off Delay Seconds</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>1</minimum>
+        <maximum>30</maximum>
+        <default>8</default>
+      </property>
+      <property>
+        <name>Volume Ramp Delay Milliseconds</name>
+        <type>RANGED_INTEGER</type>
+        <readonly>false</readonly>
+        <default>200</default>
+        <minimum>200</minimum>
+        <maximum>500</maximum>
+      </property>
+      <property>
+        <name>NetworkKeepAliveIntervalSeconds</name>
+        <type>RANGED_INTEGER</type>
+        <readonly>false</readonly>
+        <default>30</default>
+        <minimum>15</minimum>
+        <maximum>120</maximum>
+      </property>
+      <property>
+        <name>Connected To Network</name>
+        <type>STRING</type>
+        <readonly>true</readonly>
+        <default>false</default>
+      </property>
+      <property>
+        <name>MAC Address</name>
+        <type>STRING</type>
+        <default></default>
+        <readonly>true</readonly>
+      </property>
+      <property>
+        <name>IP Address</name>
+        <type>STRING</type>
+        <default></default>
+        <readonly>true</readonly>
+      </property>
+      <property>
+        <name>Player Name</name>
+        <type>STRING</type>
+        <default></default>
+        <readonly>true</readonly>
+      </property>
+      <property>
+        <name>Firmware Version</name>
+        <type>STRING</type>
+        <default></default>
+        <readonly>true</readonly>
+      </property>
+      <property>
+        <name>Passthrough Mode</name>
+        <type>LIST</type>
+        <items>
+          <item>Off</item>
+          <item>On</item>
+        </items>
+        <default>Off</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>On Power Off</name>
+        <type>LIST</type>
+        <items>
+          <item>Do Nothing</item>
+          <item>Home</item>
+        </items>
+        <default>Do Nothing</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>On Power On</name>
+        <type>LIST</type>
+        <items>
+          <item>Do Nothing</item>
+          <item>Home</item>
+        </items>
+        <default>Do Nothing</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>- Mapping -</name>
+        <type>STRING</type>
+        <default>----------- Button Mapping -----------</default>
+        <readonly>true</readonly>
+      </property>
+      <property>
+        <name>MENU Button</name>
+        <type>LIST</type>
+        <items>
+          <item>Do Nothing</item>
+          <item>Home</item>
+          <item>Top Menu</item>
+          <item>Pop-up Menu</item>
+          <item>Return</item>
+          <item>Clear</item>
+          <item>Audio</item>
+          <item>Subtitle</item>
+          <item>Display</item>
+          <item>Function</item>
+          <item>Audio Parameter</item>
+          <item>Video Parameter</item>
+          <item>Continued</item>
+          <item>HDR</item>
+          <item>Source</item>
+          <item>Repeat</item>
+          <item>A-B</item>
+          <item>Replay</item>
+          <item>Short Skip</item>
+          <item>Direct</item>
+          <item>HDMI Mode</item>
+          <item>Resolution Up</item>
+          <item>Resolution Down</item>
+          <item>Dimmer</item>
+          <item>CD/SACD</item>
+          <item>Angle</item>
+          <item>EJECT</item>
+        </items>
+        <default>Top Menu</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>GUIDE Button</name>
+        <type>LIST</type>
+        <items>
+          <item>Do Nothing</item>
+          <item>Home</item>
+          <item>Top Menu</item>
+          <item>Pop-up Menu</item>
+          <item>Return</item>
+          <item>Clear</item>
+          <item>Audio</item>
+          <item>Subtitle</item>
+          <item>Display</item>
+          <item>Function</item>
+          <item>Audio Parameter</item>
+          <item>Video Parameter</item>
+          <item>Continued</item>
+          <item>HDR</item>
+          <item>Source</item>
+          <item>Repeat</item>
+          <item>A-B</item>
+          <item>Replay</item>
+          <item>Short Skip</item>
+          <item>Direct</item>
+          <item>HDMI Mode</item>
+          <item>Resolution Up</item>
+          <item>Resolution Down</item>
+          <item>Dimmer</item>
+          <item>CD/SACD</item>
+          <item>Angle</item>
+          <item>EJECT</item>
+        </items>
+        <default>Home</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>INFO Button</name>
+        <type>LIST</type>
+        <items>
+          <item>Do Nothing</item>
+          <item>Home</item>
+          <item>Top Menu</item>
+          <item>Pop-up Menu</item>
+          <item>Return</item>
+          <item>Clear</item>
+          <item>Audio</item>
+          <item>Subtitle</item>
+          <item>Display</item>
+          <item>Function</item>
+          <item>Audio Parameter</item>
+          <item>Video Parameter</item>
+          <item>Continued</item>
+          <item>HDR</item>
+          <item>Source</item>
+          <item>Repeat</item>
+          <item>A-B</item>
+          <item>Replay</item>
+          <item>Short Skip</item>
+          <item>Direct</item>
+          <item>HDMI Mode</item>
+          <item>Resolution Up</item>
+          <item>Resolution Down</item>
+          <item>Dimmer</item>
+          <item>CD/SACD</item>
+          <item>Angle</item>
+          <item>EJECT</item>
+        </items>
+        <default>Display</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>CANCEL Button</name>
+        <type>LIST</type>
+        <items>
+          <item>Do Nothing</item>
+          <item>Home</item>
+          <item>Top Menu</item>
+          <item>Pop-up Menu</item>
+          <item>Return</item>
+          <item>Clear</item>
+          <item>Audio</item>
+          <item>Subtitle</item>
+          <item>Display</item>
+          <item>Function</item>
+          <item>Audio Parameter</item>
+          <item>Video Parameter</item>
+          <item>Continued</item>
+          <item>HDR</item>
+          <item>Source</item>
+          <item>Repeat</item>
+          <item>A-B</item>
+          <item>Replay</item>
+          <item>Short Skip</item>
+          <item>Direct</item>
+          <item>HDMI Mode</item>
+          <item>Resolution Up</item>
+          <item>Resolution Down</item>
+          <item>Dimmer</item>
+          <item>CD/SACD</item>
+          <item>Angle</item>
+          <item>EJECT</item>
+        </items>
+        <default>Clear</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>PREV Button</name>
+        <type>LIST</type>
+        <items>
+          <item>Do Nothing</item>
+          <item>Home</item>
+          <item>Top Menu</item>
+          <item>Pop-up Menu</item>
+          <item>Return</item>
+          <item>Clear</item>
+          <item>Audio</item>
+          <item>Subtitle</item>
+          <item>Display</item>
+          <item>Function</item>
+          <item>Audio Parameter</item>
+          <item>Video Parameter</item>
+          <item>Continued</item>
+          <item>HDR</item>
+          <item>Source</item>
+          <item>Repeat</item>
+          <item>A-B</item>
+          <item>Replay</item>
+          <item>Short Skip</item>
+          <item>Direct</item>
+          <item>HDMI Mode</item>
+          <item>Resolution Up</item>
+          <item>Resolution Down</item>
+          <item>Dimmer</item>
+          <item>CD/SACD</item>
+          <item>Angle</item>
+          <item>EJECT</item>
+        </items>
+        <default>Return</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>DVR Button</name>
+        <type>LIST</type>
+        <items>
+          <item>Do Nothing</item>
+          <item>Home</item>
+          <item>Top Menu</item>
+          <item>Pop-up Menu</item>
+          <item>Return</item>
+          <item>Clear</item>
+          <item>Audio</item>
+          <item>Subtitle</item>
+          <item>Display</item>
+          <item>Function</item>
+          <item>Audio Parameter</item>
+          <item>Video Parameter</item>
+          <item>Continued</item>
+          <item>HDR</item>
+          <item>Source</item>
+          <item>Repeat</item>
+          <item>A-B</item>
+          <item>Replay</item>
+          <item>Short Skip</item>
+          <item>Direct</item>
+          <item>HDMI Mode</item>
+          <item>Resolution Up</item>
+          <item>Resolution Down</item>
+          <item>Dimmer</item>
+          <item>CD/SACD</item>
+          <item>Angle</item>
+          <item>EJECT</item>
+        </items>
+        <default>Do Nothing</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>STAR Button</name>
+        <type>LIST</type>
+        <items>
+          <item>Do Nothing</item>
+          <item>Home</item>
+          <item>Top Menu</item>
+          <item>Pop-up Menu</item>
+          <item>Return</item>
+          <item>Clear</item>
+          <item>Audio</item>
+          <item>Subtitle</item>
+          <item>Display</item>
+          <item>Function</item>
+          <item>Audio Parameter</item>
+          <item>Video Parameter</item>
+          <item>Continued</item>
+          <item>HDR</item>
+          <item>Source</item>
+          <item>Repeat</item>
+          <item>A-B</item>
+          <item>Replay</item>
+          <item>Short Skip</item>
+          <item>Direct</item>
+          <item>HDMI Mode</item>
+          <item>Resolution Up</item>
+          <item>Resolution Down</item>
+          <item>Dimmer</item>
+          <item>CD/SACD</item>
+          <item>Angle</item>
+          <item>EJECT</item>
+        </items>
+        <default>Do Nothing</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>POUND Button</name>
+        <type>LIST</type>
+        <items>
+          <item>Do Nothing</item>
+          <item>Home</item>
+          <item>Top Menu</item>
+          <item>Pop-up Menu</item>
+          <item>Return</item>
+          <item>Clear</item>
+          <item>Audio</item>
+          <item>Subtitle</item>
+          <item>Display</item>
+          <item>Function</item>
+          <item>Audio Parameter</item>
+          <item>Video Parameter</item>
+          <item>Continued</item>
+          <item>HDR</item>
+          <item>Source</item>
+          <item>Repeat</item>
+          <item>A-B</item>
+          <item>Replay</item>
+          <item>Short Skip</item>
+          <item>Direct</item>
+          <item>HDMI Mode</item>
+          <item>Resolution Up</item>
+          <item>Resolution Down</item>
+          <item>Dimmer</item>
+          <item>CD/SACD</item>
+          <item>Angle</item>
+          <item>EJECT</item>
+        </items>
+        <default>Do Nothing</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>PAGE UP Button</name>
+        <type>LIST</type>
+        <items>
+          <item>Do Nothing</item>
+          <item>Home</item>
+          <item>Top Menu</item>
+          <item>Pop-up Menu</item>
+          <item>Return</item>
+          <item>Clear</item>
+          <item>Audio</item>
+          <item>Subtitle</item>
+          <item>Display</item>
+          <item>Function</item>
+          <item>Audio Parameter</item>
+          <item>Video Parameter</item>
+          <item>Continued</item>
+          <item>HDR</item>
+          <item>Source</item>
+          <item>Repeat</item>
+          <item>A-B</item>
+          <item>Replay</item>
+          <item>Short Skip</item>
+          <item>Direct</item>
+          <item>HDMI Mode</item>
+          <item>Resolution Up</item>
+          <item>Resolution Down</item>
+          <item>Dimmer</item>
+          <item>CD/SACD</item>
+          <item>Angle</item>
+          <item>EJECT</item>
+        </items>
+        <default>Short Skip</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>PAGE DOWN Button</name>
+        <type>LIST</type>
+        <items>
+          <item>Do Nothing</item>
+          <item>Home</item>
+          <item>Top Menu</item>
+          <item>Pop-up Menu</item>
+          <item>Return</item>
+          <item>Clear</item>
+          <item>Audio</item>
+          <item>Subtitle</item>
+          <item>Display</item>
+          <item>Function</item>
+          <item>Audio Parameter</item>
+          <item>Video Parameter</item>
+          <item>Continued</item>
+          <item>HDR</item>
+          <item>Source</item>
+          <item>Repeat</item>
+          <item>A-B</item>
+          <item>Replay</item>
+          <item>Short Skip</item>
+          <item>Direct</item>
+          <item>HDMI Mode</item>
+          <item>Resolution Up</item>
+          <item>Resolution Down</item>
+          <item>Dimmer</item>
+          <item>CD/SACD</item>
+          <item>Angle</item>
+          <item>EJECT</item>
+        </items>
+        <default>Replay</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>CUSTOM 1 Button</name>
+        <type>LIST</type>
+        <items>
+          <item>Do Nothing</item>
+          <item>Home</item>
+          <item>Top Menu</item>
+          <item>Pop-up Menu</item>
+          <item>Return</item>
+          <item>Clear</item>
+          <item>Audio</item>
+          <item>Subtitle</item>
+          <item>Display</item>
+          <item>Function</item>
+          <item>Audio Parameter</item>
+          <item>Video Parameter</item>
+          <item>Continued</item>
+          <item>HDR</item>
+          <item>Source</item>
+          <item>Repeat</item>
+          <item>A-B</item>
+          <item>Replay</item>
+          <item>Short Skip</item>
+          <item>Direct</item>
+          <item>HDMI Mode</item>
+          <item>Resolution Up</item>
+          <item>Resolution Down</item>
+          <item>Dimmer</item>
+          <item>CD/SACD</item>
+          <item>Angle</item>
+          <item>EJECT</item>
+        </items>
+        <default>Do Nothing</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>CUSTOM 2 Button</name>
+        <type>LIST</type>
+        <items>
+          <item>Do Nothing</item>
+          <item>Home</item>
+          <item>Top Menu</item>
+          <item>Pop-up Menu</item>
+          <item>Return</item>
+          <item>Clear</item>
+          <item>Audio</item>
+          <item>Subtitle</item>
+          <item>Display</item>
+          <item>Function</item>
+          <item>Audio Parameter</item>
+          <item>Video Parameter</item>
+          <item>Continued</item>
+          <item>HDR</item>
+          <item>Source</item>
+          <item>Repeat</item>
+          <item>A-B</item>
+          <item>Replay</item>
+          <item>Short Skip</item>
+          <item>Direct</item>
+          <item>HDMI Mode</item>
+          <item>Resolution Up</item>
+          <item>Resolution Down</item>
+          <item>Dimmer</item>
+          <item>CD/SACD</item>
+          <item>Angle</item>
+          <item>EJECT</item>
+        </items>
+        <default>Do Nothing</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>CUSTOM 3 Button</name>
+        <type>LIST</type>
+        <items>
+          <item>Do Nothing</item>
+          <item>Home</item>
+          <item>Top Menu</item>
+          <item>Pop-up Menu</item>
+          <item>Return</item>
+          <item>Clear</item>
+          <item>Audio</item>
+          <item>Subtitle</item>
+          <item>Display</item>
+          <item>Function</item>
+          <item>Audio Parameter</item>
+          <item>Video Parameter</item>
+          <item>Continued</item>
+          <item>HDR</item>
+          <item>Source</item>
+          <item>Repeat</item>
+          <item>A-B</item>
+          <item>Replay</item>
+          <item>Short Skip</item>
+          <item>Direct</item>
+          <item>HDMI Mode</item>
+          <item>Resolution Up</item>
+          <item>Resolution Down</item>
+          <item>Dimmer</item>
+          <item>CD/SACD</item>
+          <item>Angle</item>
+          <item>EJECT</item>
+        </items>
+        <default>Do Nothing</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>RED Button</name>
+        <type>LIST</type>
+        <items>
+          <item>Do Nothing</item>
+          <item>Home</item>
+          <item>Top Menu</item>
+          <item>Pop-up Menu</item>
+          <item>Return</item>
+          <item>Clear</item>
+          <item>Audio</item>
+          <item>Subtitle</item>
+          <item>Display</item>
+          <item>Function</item>
+          <item>Audio Parameter</item>
+          <item>Video Parameter</item>
+          <item>Continued</item>
+          <item>HDR</item>
+          <item>Source</item>
+          <item>Repeat</item>
+          <item>A-B</item>
+          <item>Replay</item>
+          <item>Short Skip</item>
+          <item>Direct</item>
+          <item>HDMI Mode</item>
+          <item>Resolution Up</item>
+          <item>Resolution Down</item>
+          <item>Dimmer</item>
+          <item>CD/SACD</item>
+          <item>Angle</item>
+          <item>EJECT</item>
+          <item>RED</item>
+        </items>
+        <default>RED</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>GREEN Button</name>
+        <type>LIST</type>
+        <items>
+          <item>Do Nothing</item>
+          <item>Home</item>
+          <item>Top Menu</item>
+          <item>Pop-up Menu</item>
+          <item>Return</item>
+          <item>Clear</item>
+          <item>Audio</item>
+          <item>Subtitle</item>
+          <item>Display</item>
+          <item>Function</item>
+          <item>Audio Parameter</item>
+          <item>Video Parameter</item>
+          <item>Continued</item>
+          <item>HDR</item>
+          <item>Source</item>
+          <item>Repeat</item>
+          <item>A-B</item>
+          <item>Replay</item>
+          <item>Short Skip</item>
+          <item>Direct</item>
+          <item>HDMI Mode</item>
+          <item>Resolution Up</item>
+          <item>Resolution Down</item>
+          <item>Dimmer</item>
+          <item>CD/SACD</item>
+          <item>Angle</item>
+          <item>EJECT</item>
+          <item>GREEN</item>
+        </items>
+        <default>GREEN</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>YELLOW Button</name>
+        <type>LIST</type>
+        <items>
+          <item>Do Nothing</item>
+          <item>Home</item>
+          <item>Top Menu</item>
+          <item>Pop-up Menu</item>
+          <item>Return</item>
+          <item>Clear</item>
+          <item>Audio</item>
+          <item>Subtitle</item>
+          <item>Display</item>
+          <item>Function</item>
+          <item>Audio Parameter</item>
+          <item>Video Parameter</item>
+          <item>Continued</item>
+          <item>HDR</item>
+          <item>Source</item>
+          <item>Repeat</item>
+          <item>A-B</item>
+          <item>Replay</item>
+          <item>Short Skip</item>
+          <item>Direct</item>
+          <item>HDMI Mode</item>
+          <item>Resolution Up</item>
+          <item>Resolution Down</item>
+          <item>Dimmer</item>
+          <item>CD/SACD</item>
+          <item>Angle</item>
+          <item>EJECT</item>
+          <item>YELLOW</item>
+        </items>
+        <default>YELLOW</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>BLUE Button</name>
+        <type>LIST</type>
+        <items>
+          <item>Do Nothing</item>
+          <item>Home</item>
+          <item>Top Menu</item>
+          <item>Pop-up Menu</item>
+          <item>Return</item>
+          <item>Clear</item>
+          <item>Audio</item>
+          <item>Subtitle</item>
+          <item>Display</item>
+          <item>Function</item>
+          <item>Audio Parameter</item>
+          <item>Video Parameter</item>
+          <item>Continued</item>
+          <item>HDR</item>
+          <item>Source</item>
+          <item>Repeat</item>
+          <item>A-B</item>
+          <item>Replay</item>
+          <item>Short Skip</item>
+          <item>Direct</item>
+          <item>HDMI Mode</item>
+          <item>Resolution Up</item>
+          <item>Resolution Down</item>
+          <item>Dimmer</item>
+          <item>CD/SACD</item>
+          <item>Angle</item>
+          <item>EJECT</item>
+          <item>BLUE</item>
+        </items>
+        <default>BLUE</default>
+        <readonly>false</readonly>
+      </property>
+    </properties>
+    <actions>
+      <action>
+        <name>Get MAC Address</name>
+        <command>GetMacAddress</command>
+      </action>
+    </actions>
+    <commands>
+      <command>
+        <name>Remote Key</name>
+        <description>Remote Key PARAM1 NAME</description>
+        <params>
+          <param>
+            <name>Key</name>
+            <type>LIST</type>
+            <readonly>False</readonly>
+            <default />
+            <items>
+              <item>Audio</item>
+              <item>Subtitle</item>
+              <item>Display</item>
+              <item>Function</item>
+              <item>Audio Parameter</item>
+              <item>Video Parameter</item>
+              <item>Continued</item>
+              <item>HDR</item>
+              <item>Source</item>
+              <item>Repeat</item>
+              <item>A-B</item>
+              <item>Replay</item>
+              <item>Short Skip</item>
+              <item>Direct</item>
+              <item>HDMI Mode</item>
+              <item>Resolution Up</item>
+              <item>Resolution Down</item>
+              <item>Dimmer</item>
+              <item>CD/SACD</item>
+              <item>Angle</item>
+              <item>Home</item>
+              <item>Top Menu</item>
+              <item>Pop-up Menu</item>
+              <item>Return</item>
+              <item>Clear</item>
+            </items>
+          </param>
+        </params>
+      </command>
+    </commands>
+    <irsection>
+      <ircodes>
+        <ircode verified="False" controlrating="0">
+          <id>1019</id>
+          <name>VIDEO PARAMETER</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 003F 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 003F 0016 003F 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>101</id>
+          <name>Power On</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1015</id>
+          <name>YELLOW</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 003F 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1006</id>
+          <name>REPLAY</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 003F 0016 003F 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1007</id>
+          <name>SHORT SKIP</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 003F 0016 003F 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1005</id>
+          <name>REPEAT</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1011</id>
+          <name>HOME MENU</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1013</id>
+          <name>GREEN</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 003F 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 003F 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1004</id>
+          <name>FL DIMMER</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1030</id>
+          <name>HDR</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1029</id>
+          <name>HQ SOUND</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1028</id>
+          <name>MIRACAST</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1027</id>
+          <name>2ND AUDIO</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1026</id>
+          <name>2ND VIDEO</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1025</id>
+          <name>ANGLE</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1024</id>
+          <name>DIRECT</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1023</id>
+          <name>RESOLUTION DOWN</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>3</id>
+          <name>Pause</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 003F 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1021</id>
+          <name>HDMI MODE</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1020</id>
+          <name>AUDIO PARAMETER</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 003F 0016 003F 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1003</id>
+          <name>CD/SACD</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1018</id>
+          <name>KEY LOCK</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 003F 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1017</id>
+          <name>FUNCTION</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 0016 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1016</id>
+          <name>CLEAR</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>125</id>
+          <name>DISPLAY</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1014</id>
+          <name>BLUE</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 003F 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>103</id>
+          <name>POWER_TOGGLE</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1012</id>
+          <name>RED</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 003F 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>121</id>
+          <name>Cancel</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1010</id>
+          <name>POPUP MENU</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1009</id>
+          <name>SOURCE</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1008</id>
+          <name>A-B</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>117</id>
+          <name>Open/Close</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>116</id>
+          <name>Right</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 003F 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>115</id>
+          <name>Left</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>114</id>
+          <name>Down</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>113</id>
+          <name>Up</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1002</id>
+          <name>SUBTITLE</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 003F 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>111</id>
+          <name>Enter</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1000</id>
+          <name>CONTINUED</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>102</id>
+          <name>Power Off</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>19</id>
+          <name>Number 9</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>18</id>
+          <name>Number 8</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>17</id>
+          <name>Number 7</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>16</id>
+          <name>Number 6</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 0016 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>15</id>
+          <name>Number 5</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>14</id>
+          <name>Number 4</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>13</id>
+          <name>Number 3</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>12</id>
+          <name>Number 2</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>11</id>
+          <name>Number 1</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>10</id>
+          <name>Number 0</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1022</id>
+          <name>RESOLUTION UP</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>7</id>
+          <name>Scan Reverse</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>6</id>
+          <name>Scan Forward</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>5</id>
+          <name>Skip Reverse</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 003F 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>4</id>
+          <name>Skip Forward</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 003F 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>108</id>
+          <name>Menu</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>2</id>
+          <name>Stop</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 003F 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1</id>
+          <name>Play</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 003F 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+        <ircode verified="False" controlrating="0">
+          <id>1001</id>
+          <name>AUDIO</name>
+          <transmit>PULSE</transmit>
+          <repeatcount>1</repeatcount>
+          <delayafter>0</delayafter>
+          <pattern>0000 0067 0000 0044 0156 00AB 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 03F9 0156 00AB 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 003F 0016 0016 0016 0016 0016 003F 0016 003F 0016 003F 0016 003F 0016 003F 0016 0016 0016 003F 0016 003F 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 0016 003F 0016 0016 0016 03F9</pattern>
+          <altpattern />
+        </ircode>
+      </ircodes>
+    </irsection>
+  </config>
+  <composer_categories>
+    <category>Audio/Video</category>
+  </composer_categories>
+</devicedata>
